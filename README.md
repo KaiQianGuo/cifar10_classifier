@@ -47,7 +47,7 @@ cifar10_classifier/
 
 2. **准备数据：**
 
-   请将 CIFAR-10 数据集（`cifar-10-python.tar.gz`）解压到 `data/cifar-10-batches-py` 文件夹中，或运行如下脚本加载数据：
+   解压后的 CIFAR-10 数据集（`cifar-10-python.tar.gz`）保存在`data/cifar-10-batches-py` 文件夹中，运行如下脚本加载数据：
 
    ```python
    from utils.data_loader import load_cifar10_data
@@ -86,10 +86,9 @@ cifar10_classifier/
 
 ## 🧠 模型结构
 
-- 输入层（3072）
-- 隐藏层1（自定义）
-- 隐藏层2（自定义）
-- 输出层（10 类）
+- **输入层**：输入图像为 $32\times32\times3$ 的彩色图像，展平为 3072 维向量。
+- **隐藏层**：可选神经元个数为 64、128 或 256（通过超参数搜索确定）
+- **输出层**：包含 10 个神经元，使用 Softmax 函数输出每个类别的概率分布。
 - 支持 ReLU 与 Sigmoid 激活函数
 - 使用 Softmax 和交叉熵损失
 
