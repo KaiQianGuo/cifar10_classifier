@@ -31,7 +31,7 @@ cfg = {
     'learning_rate': 0.01,
     'batch_size': 64,
     'epochs': 50,
-    'lr_decay_rate': 0.96,
+    'lr_decay_rate': 0.95,
     'lr_decay_every': 10,
     'MODEL_SAVE_PATH': '/home/zhengweiguo/q2q2p/cifar10_classifier/logs/search_logs_sigmoid/best_model.pkl'
 }
