@@ -26,6 +26,7 @@ cifar10_classifier/
 ├── best_model_sigmoid.pkl  # Sigmoid 激活函数下的最佳模型
 ├── param_search_relu.py    # ReLU 参数搜索脚本
 ├── param_search_sigmoid.py # Sigmoid 参数搜索脚本
+├── print_param.py          # 打印模型最佳超参数组合
 ├── train_vis_relu.py       # 使用 ReLU 最佳参数训练模型并可视化
 ├── train_vis_sigmoid.py    # 使用 Sigmoid 最佳参数训练模型并可视化
 ├── training.py             # 训练逻辑主脚本（参数搜索时用）
@@ -64,6 +65,7 @@ cifar10_classifier/
 4. **训练最佳模型并可视化：**
 
    ```bash
+   python print_param.py # 根据输出的参数调整train_vis_relu.py和train_vis_sigmoid.py文件的超参数
    python train_vis_relu.py
    python train_vis_sigmoid.py
    ```
