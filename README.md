@@ -19,19 +19,22 @@ cifar10_classifier/
 ├── picture/                # 可视化训练曲线
 │   ├── curve_relu_1.png
 │   └── curve_sigmoid_1.png
-├── utils/                  # 工具函数
-│   ├── data_loader.py      # 数据加载器
-│   └── visualizer.py       # 训练过程可视化工具
-├── best_model_relu.pkl     # ReLU 激活函数下的最佳模型
-├── best_model_sigmoid.pkl  # Sigmoid 激活函数下的最佳模型
-├── param_search_relu.py    # ReLU 参数搜索脚本
-├── param_search_sigmoid.py # Sigmoid 参数搜索脚本
-├── print_param.py          # 打印模型最佳超参数组合
-├── train_vis_relu.py       # 使用 ReLU 最佳参数训练模型并可视化
-├── train_vis_sigmoid.py    # 使用 Sigmoid 最佳参数训练模型并可视化
-├── training.py             # 训练逻辑主脚本（参数搜索时用）
-├── test.py                 # 模型测试脚本
-└── README.md               # 项目说明文件
+│   └── sigmoid_weights.png
+│   └── relu_weights.png
+├── utils/                    # 工具函数
+│   ├── data_loader.py        # 数据加载器
+│   └── visualizer.py         # 训练过程可视化工具
+│   └── visualize_weights.py  # 模型参数可视化工具
+├── best_model_relu.pkl       # ReLU 激活函数下的最佳模型
+├── best_model_sigmoid.pkl    # Sigmoid 激活函数下的最佳模型
+├── param_search_relu.py      # ReLU 参数搜索脚本
+├── param_search_sigmoid.py   # Sigmoid 参数搜索脚本
+├── print_param.py            # 打印模型最佳超参数组合
+├── train_vis_relu.py         # 使用 ReLU 最佳参数训练模型并可视化
+├── train_vis_sigmoid.py      # 使用 Sigmoid 最佳参数训练模型并可视化
+├── training.py               # 训练逻辑主脚本（参数搜索时用）
+├── test.py                   # 模型测试脚本
+└── README.md                 # 项目说明文件
 ```
 
 ---
@@ -70,7 +73,19 @@ cifar10_classifier/
    python train_vis_sigmoid.py
    ```
 
-5. **测试模型：**
+5. **模型权重可视化：**
+
+   本项目支持对已训练模型的**第一层权重**进行可视化，帮助理解神经网络在输入层学习到的图像基础特征。
+   可视化脚本支持读取通过 `pickle` 序列化保存的模型文件（`.pkl`），模型应包含名为 `"W1"` 的键，对应第一层权重（形状应为 `(3072, hidden_size)`）。
+
+   通过命令行运行如下命令可生成可视化图像：
+
+   ```bash
+   python visualize_weights.py \
+     --model best_model.pkl \
+     --output weights.png 
+   ```
+6. **测试模型：**
 
    ```bash
    python test.py
@@ -83,6 +98,10 @@ cifar10_classifier/
 训练过程中，loss 和 accuracy 随 epoch 变化的图像保存在 `picture/` 目录中，分别为：
 - `curve_relu_1.png`
 - `curve_sigmoid_1.png`
+
+模型参数，对应第一层权重的前16个神经元的结果可视化结果保存在 `picture/` 目录中，分别为：
+- `sigmoid_weights.png`
+- `relu_weights.png`
 
 ---
 
